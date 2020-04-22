@@ -55,8 +55,8 @@ class BinarySearchTree {
       if (node.left === null && node.right === null) return null
 
       /* CASO 2 IL NODO DA RIMUOVERE HA UN SOLO FIGLIO */
-      if (node.left === null) return node.left
-      if (node.right === null) return node.right
+      if (node.left === null) return node.right
+      if (node.right === null) return node.left
 
       /** CASO 3 IL NODO DA RIMUOVERE HA DUE FIGLI 
        * DEVO:
@@ -64,9 +64,9 @@ class BinarySearchTree {
        * 2. Devo sostituire il valore minimo trovate con il valore corrente del nodo che sto analizzando
        * 3. Devo eliminare il nodo minimo trovato al passo 1
       */
-      const min = this.getMin(node.left)
+      const min = this.getMin(node.right)
       node.data = min.data
-      node.right = this.removeNode(node.left, min.data)
+      node.right = this.removeNode(node.right, min.data)
       return node
     }
   }

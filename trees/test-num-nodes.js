@@ -11,7 +11,7 @@ function BST() {
     this.root = null;
     this.insert = insert;
     this.inOrder = inOrder;
-    this.contaNodi = contaNodi
+    this.getNumNodes = getNumNodes
 }
 function insert(data) {
     var n = new Node(data, null, null);
@@ -47,11 +47,11 @@ function inOrder(node) {
         inOrder(node.right);
     }
 }
-function contaNodi(node) {
+function getNumNodes(node) {
     if (!(node == null)) {
-        contaNodi(node.left);
+        getNumNodes(node.left);
         contatore++
-        contaNodi(node.right);
+        getNumNodes(node.right);
     }
 }
 var nums = new BST();
@@ -65,5 +65,5 @@ nums.insert(22);
 console.log("Inorder traversal: ");
 inOrder(nums.root)
 var contatore = 0
-contaNodi(nums.root)
+getNumNodes(nums.root)
 console.log("Numero nodi: " + contatore)

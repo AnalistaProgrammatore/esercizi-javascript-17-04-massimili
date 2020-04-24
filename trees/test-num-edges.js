@@ -11,7 +11,7 @@ function BST() {
     this.root = null;
     this.insert = insert;
     this.inOrder = inOrder;
-    this.contaSpigoli = contaSpigoli
+    this.getNumEdges = getNumEdges
 }
 function insert(data) {
     var n = new Node(data, null, null);
@@ -47,12 +47,12 @@ function inOrder(node) {
         inOrder(node.right);
     }
 }
-function contaSpigoli(node) {
+function getNumEdges(node) {
     if (!(node == null)) {
         if (node.left != null) contaSinistri++;
-        contaSpigoli(node.left);
+        getNumEdges(node.left);
         if (node.right != null) contaDestri++;
-        contaSpigoli(node.right);
+        getNumEdges(node.right);
     }
 }
 var nums = new BST();
@@ -67,6 +67,6 @@ console.log("Inorder traversal: ");
 inOrder(nums.root)
 var contaDestri = 0
 var contaSinistri = 0
-contaSpigoli(nums.root)
+getNumEdges(nums.root)
 var spigoliTotali = contaDestri + contaSinistri
 console.log("Numero nodi a sinistra: " + contaSinistri + ", a destra: " + contaDestri + ". Totali: " + spigoliTotali)
